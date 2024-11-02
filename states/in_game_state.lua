@@ -48,8 +48,8 @@ function state:draw()
     love.graphics.scale(scale, scale) -- Apply the scaling transformation
 
     -- Draw the ground GroundTiles
-    for i = 0, 650 / GroundTileSize do
-        love.graphics.draw(GroundImage, GroundTiles[i % 2 + 1], i * GroundTileSize, 360 - GroundTileSize, 0, 1, 1)
+    for i = 0, 660 / GroundTileSize do
+        love.graphics.draw(GroundImage, GroundTiles[i % 3 + 1], i * GroundTileSize, 360 - GroundTileSize, 0, 1, 1)
     end
 
     for i = 0, love.graphics.getWidth() / BG1Size do
