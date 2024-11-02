@@ -4,3 +4,9 @@ This is a template for creating a game using the [LÖVE](https://love2d.org/) fr
 
 ## Linux
 VSCode: F5 to run the game.
+
+While the game is running, press tilde ( ~ ) to activate the console. Print commands will show here. Type reload to reload your game.
+
+Libraries:
+- https://bitbucket.org/basicer/cupid-git/src/master/
+- https://github.com/kikito/middleclass
