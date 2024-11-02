@@ -20,6 +20,7 @@ function love.load()
     Init_Graphics()
     GState:load()
 
+    -- Initial Game State
     GState:switch("menu_state", false)
 end
 

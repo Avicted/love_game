@@ -3,7 +3,7 @@ local state = {}
 state.name = "menu_state"
 
 function state:load()
-    font = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 24)
+    font = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 16)
     love.graphics.setFont(font)
 end
 
@@ -18,7 +18,8 @@ function state:update(dt)
 end
 
 function state:draw()
-    love.graphics.setBackgroundColor(0.05, 0.05, 0.2)
+    bgMesh = gradientMesh("vertical", {0.0, 0.6, 0.9}, {0.1, 0.2, 0.4})
+    love.graphics.draw(bgMesh, 0, 0, 0, love.graphics.getDimensions())
 
     local window_width = love.graphics.getWidth()
     local title = "Menu State"
