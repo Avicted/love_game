@@ -1,5 +1,9 @@
+-- External libraries
 -- require "libs/cupid"
 Class = require "libs/middleclass"
+
+-- Game libraries
+require "libs/helperlib"
 require "libs/GState"
 
 local settings = require("settings")
@@ -11,15 +15,9 @@ function love.resize(w, h)
     scale = math.min(scaleX, scaleY)
 end
 
-local scale = 1
-
 function love.load()
-    -- Font setup    
-    love.graphics.setDefaultFilter("nearest", "nearest") -- Disable smoothing
-    font = love.graphics.newFont(32) -- Load the font
-    love.graphics.setFont(font)
-
     -- Init Libs
+    Init_Graphics()
     GState:load()
 
     GState:switch("menu_state", false)

@@ -17,6 +17,8 @@ function state:update(dt)
 end
 
 function state:draw()
+    love.graphics.setBackgroundColor(0.05, 0.05, 0.2)
+
     local window_width = love.graphics.getWidth()
     local title = "Menu State"
     local instruction1 = "Press SPACE to switch to in_game_state"
