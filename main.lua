@@ -30,4 +30,10 @@ end
 
 function love.draw()
     GState:draw()
+
+    -- FPS top left
+    love.graphics.setColor(0, 0, 0)
+    love.graphics.print("FPS: " .. love.timer.getFPS(), 12, 12)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.print("FPS: " .. love.timer.getFPS(), 10, 10)
 end
