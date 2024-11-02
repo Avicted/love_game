@@ -2,7 +2,23 @@ local state = {}
 
 state.name = "menu_state"
 
+local stars = {} -- Table to hold star positions and sizes
+local numStars = 128
+
 function state:load()
+    -- Generate star positions and sizes once and store them in the stars table
+    for i = 1, numStars do
+        local x = math.random(0, 640)
+        local y = math.random(0, 360)
+        local size = math.random(1, 5) -- Random size between 1 and 5 pixels
+
+        table.insert(stars, {
+            x = x,
+            y = y,
+            size = size -- Store size of each star
+        })
+    end
+
     font = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 16)
     love.graphics.setFont(font)
 end
@@ -18,8 +34,21 @@ function state:update(dt)
 end
 
 function state:draw()
+    -- Apply scaling to everything inside love.draw
+    love.graphics.push() -- Save current transformation state
+    love.graphics.scale(scale, scale) -- Apply the scaling transformation
+
     bgMesh = gradientMesh("vertical", {0.0, 0.6, 0.9}, {0.1, 0.2, 0.4})
     love.graphics.draw(bgMesh, 0, 0, 0, love.graphics.getDimensions())
+
+    -- Draw stars using stored positions and sizes
+    love.graphics.setColor(1.0, 1.0, 1.0) -- Set color to white for stars
+    for _, star in ipairs(stars) do
+        love.graphics.setPointSize(star.size) -- Set the point size for each star
+        love.graphics.points(star.x, star.y) -- Draw the star
+    end
+
+    love.graphics.pop() -- Restore transformation state
 
     local window_width = love.graphics.getWidth()
     local title = "Menu State"
@@ -33,6 +62,7 @@ function state:draw()
     love.graphics.print(title, (window_width - title_width) / 2, 100)
     love.graphics.print(instruction1, (window_width - instruction1_width) / 2, 200)
     love.graphics.print(instruction2, (window_width - instruction2_width) / 2, 240)
+
 end
 
 function state:unload()

@@ -24,8 +24,8 @@ function Player:initialize()
 end
 
 function Player:update(dt)
-    self.velocity = self.velocity + self.gravity
-    self.y = self.y - self.velocity
+    -- self.velocity = self.velocity + self.gravity
+    -- self.y = self.y - self.velocity
 
     -- Animate
     self.currentFrame = self.currentFrame + self.animationSpeed
