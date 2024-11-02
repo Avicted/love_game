@@ -4,8 +4,8 @@ local Class = require "libs/middleclass"
 Player = Class("Player")
 
 function Player:initialize()
-    self.x = love.graphics.getWidth() / 4
-    self.y = love.graphics.getHeight() / 2
+    self.x = 640 / 4
+    self.y = 360 / 2
     self.width = 16
     self.height = 16
     self.gravity = -0.00981
