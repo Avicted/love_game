@@ -28,7 +28,6 @@ end
 
 function state:draw()
     local title = "love_game"
-    local font = love.graphics.newFont(32)
     love.graphics.setFont(font)
 
     love.graphics.setBackgroundColor(0.05, 0.05, 0.2)

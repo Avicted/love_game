@@ -3,7 +3,8 @@ local state = {}
 state.name = "menu_state"
 
 function state:load()
-
+    font = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 24)
+    love.graphics.setFont(font)
 end
 
 function state:update(dt)
@@ -29,8 +30,8 @@ function state:draw()
     local instruction2_width = love.graphics.getFont():getWidth(instruction2)
 
     love.graphics.print(title, (window_width - title_width) / 2, 100)
-    love.graphics.print(instruction1, (window_width - instruction1_width) / 2, 140)
-    love.graphics.print(instruction2, (window_width - instruction2_width) / 2, 180)
+    love.graphics.print(instruction1, (window_width - instruction1_width) / 2, 200)
+    love.graphics.print(instruction2, (window_width - instruction2_width) / 2, 240)
 end
 
 function state:unload()
