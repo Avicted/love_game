@@ -4,12 +4,12 @@ local Class = require "libs/middleclass"
 Player = Class("Player")
 
 function Player:initialize()
-    self.x = love.graphics.getWidth() / 2
+    self.x = love.graphics.getWidth() / 4
     self.y = love.graphics.getHeight() / 2
     self.width = 16
     self.height = 16
-    self.gravity = 0
-    self.lift = -10
+    self.gravity = -0.00981
+    self.lift = 0.05
     self.velocity = 0
     self.image = love.graphics.newImage("resources/sprites/BirdSprite.png")
     self.animationFrames = {love.graphics.newQuad(0, 16, 16, 16, self.image:getDimensions()),

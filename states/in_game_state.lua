@@ -28,11 +28,15 @@ function state:update(dt)
         GState:switch("menu_state", true)
     end
 
+    if love.keyboard.isDown("space") then
+        Player:jump()
+    end
+
     Player:update(dt)
 end
 
 function state:draw()
-    local title = "love_game"
+    local title = "Press SPACE to fly up"
     love.graphics.setFont(font)
 
     -- love.graphics.setBackgroundColor(0.05, 0.05, 0.2)
@@ -61,4 +65,5 @@ end
 function state:unload()
 
 end
+
 return state
