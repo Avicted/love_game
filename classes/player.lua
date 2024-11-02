@@ -20,12 +20,12 @@ function Player:initialize()
                             love.graphics.newQuad(80, 16, 16, 16, self.image:getDimensions()),
                             love.graphics.newQuad(96, 16, 16, 16, self.image:getDimensions())}
     self.currentFrame = 1
-    self.animationSpeed = 0.05
+    self.animationSpeed = 0.10
 end
 
 function Player:update(dt)
-    -- self.velocity = self.velocity + self.gravity
-    -- self.y = self.y - self.velocity
+    self.velocity = self.velocity + self.gravity
+    self.y = self.y - self.velocity
 
     -- Animate
     self.currentFrame = self.currentFrame + self.animationSpeed
