@@ -127,7 +127,7 @@ function state:draw()
 
     -- Draw the background
     for i = 0, love.graphics.getWidth() / BG1Size + 1 do
-        love.graphics.draw(BG1, bgX + i * BG1Size, 360 - BG1Size - GroundTileSize, 0, 1, 1)
+        love.graphics.draw(BG1, bgX + i * BG1Size, 360 - BG1Size - (-GroundTileSize / 0.2), 0, 1, 1)
     end
 
     -- Draw the ground
