@@ -4,6 +4,7 @@ state.name = "in_game"
 
 local stars = {} -- Table to hold star positions and sizes
 local numStars = 128
+local Player = require("classes/player")
 
 function state:load()
     -- Generate star positions and sizes once and store them in the stars table
@@ -18,19 +19,24 @@ function state:load()
             size = size -- Store size of each star
         })
     end
+
+    Player:initialize()
 end
 
 function state:update(dt)
     if love.keyboard.isDown("backspace") then
         GState:switch("menu_state", true)
     end
+
+    Player:update(dt)
 end
 
 function state:draw()
     local title = "love_game"
     love.graphics.setFont(font)
 
-    love.graphics.setBackgroundColor(0.05, 0.05, 0.2)
+    -- love.graphics.setBackgroundColor(0.05, 0.05, 0.2)
+    love.graphics.setBackgroundColor(0.0, 0.8, 0.2)
 
     -- Apply scaling to everything inside love.draw
     love.graphics.push() -- Save current transformation state
@@ -45,7 +51,9 @@ function state:draw()
 
     -- Center the title text
     love.graphics.setColor(1, 1, 1) -- Set color to white for the title text
-    love.graphics.printf(title, 0, 180 - font:getHeight() / 2, 640, "center")
+    love.graphics.printf(title, 0, 160 - font:getHeight() / 2, 640, "center")
+
+    Player:draw()
 
     love.graphics.pop() -- Restore transformation state
 end

@@ -10,3 +10,7 @@ While the game is running, press tilde ( ~ ) to activate the console. Print comm
 Libraries:
 - https://bitbucket.org/basicer/cupid-git/src/master/
 - https://github.com/kikito/middleclass
+
+
+Assets:
+- https://ma9ici4n.itch.io/pixel-art-bird-16x16
