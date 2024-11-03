@@ -22,7 +22,7 @@ function Player:initialize()
                             love.graphics.newQuad(80, 16, 16, 16, self.image:getDimensions()),
                             love.graphics.newQuad(96, 16, 16, 16, self.image:getDimensions())}
     self.currentFrame = 1
-    self.animationSpeed = 0.10
+    self.animationSpeed = 0.20
 
     -- Box2D body
     self.body = love.physics.newBody(world, 8, 8, "dynamic")
