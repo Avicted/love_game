@@ -22,6 +22,7 @@ local groundX = 0
 local scrollSpeed = 128
 
 local score = 0
+local totalPipesRemoved = 0
 
 function generatePipePair()
     local newX = 200 -- x, should always be minimum last pipe x + 100
@@ -50,6 +51,8 @@ function generatePipePair()
 
     table.insert(PipesInMap, upperPipe)
     table.insert(PipesInMap, lowerPipe)
+
+    print("Pipe pair generated")
 end
 
 function state:load()
@@ -133,11 +136,15 @@ function state:update(dt)
     end
 
     -- Reset pipes that are off screen
-    for i, pipe in ipairs(PipesInMap) do
+    for i = #PipesInMap, 1, -1 do
+        local pipe = PipesInMap[i]
         if pipe.x < -32 then
             table.remove(PipesInMap, i)
+            totalPipesRemoved = totalPipesRemoved + 1
 
-            generatePipePair()
+            if totalPipesRemoved % 2 == 0 then
+                generatePipePair()
+            end
         end
     end
 
@@ -148,7 +155,7 @@ function state:update(dt)
             pipe.scored = true
             score = score + 16
 
-            if score % 100 == 0 then
+            if score % 128 == 0 then
                 scrollSpeed = scrollSpeed + 16
 
                 for i, pipe in ipairs(PipesInMap) do
