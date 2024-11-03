@@ -175,26 +175,23 @@ function state:draw()
 
     Player:draw()
 
-    -- isPlayerAlive
     if not isPlayerAlive then
         love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
-        love.graphics.printf("Game Over", 0, 32, 640, "center")
-        love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
         love.graphics.printf("Game Over", 0, 33, 640, "center")
-
-        -- Press R to restart
-        love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
-        love.graphics.printf("Press R to restart", 0, 64, 640, "center")
         love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
+        love.graphics.printf("Game Over", 0, 32, 640, "center")
+
+        love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
         love.graphics.printf("Press R to restart", 0, 65, 640, "center")
+        love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
+        love.graphics.printf("Press R to restart", 0, 64, 640, "center")
     else
-        -- set font size 16
         love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
-        love.graphics.printf(title, 0, 32, 640, "center")
-        love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
         love.graphics.printf(title, 0, 33, 640, "center")
+        love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
+        love.graphics.printf(title, 0, 32, 640, "center")
     end
 
     -- Score top left
