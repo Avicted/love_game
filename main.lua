@@ -34,7 +34,7 @@ function love.load()
                                                                                                    .scanlines)
     chain.vignette.radius = 1.4
     chain.vignette.opacity = 0.4
-    chain.scanlines.opacity = 0.15
+    chain.scanlines.opacity = 0.08
     chain.crt.distortionFactor = {1.02, 1.02}
 
     -- Init Physics
