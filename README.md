@@ -14,6 +14,7 @@ git clone --recurse-submodules git@github.com:Avicted/love_game.git
 VSCode: F5 to run the game.
 
 Libraries:
+- GState by: https://github.com/fgrhlm
 - https://bitbucket.org/basicer/cupid-git/src/master/
 - https://github.com/kikito/middleclass
 - https://github.com/vrld/moonshine
