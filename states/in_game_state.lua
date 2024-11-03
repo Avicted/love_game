@@ -4,6 +4,7 @@ state.name = "in_game"
 
 local Player = require("classes/player")
 local Pipe = require("classes/pipe")
+require("physics")
 
 local BG1
 local BG1Size = 256
@@ -18,14 +19,18 @@ local PipesInMap = {} -- pipes in use
 
 local bgX = 0
 local groundX = 0
-local scrollSpeed = 64
+local scrollSpeed = 128
+
+local score = 0
 
 function generatePipePair()
-    local newX = 0 -- x, should always be minimum last pipe x + 100
+    local newX = 200 -- x, should always be minimum last pipe x + 100
 
     for i, pipe in ipairs(PipesInMap) do
         newX = math.max(newX, pipe.x)
     end
+
+    -- math.randomseed(os.time())
 
     local pipeX = newX + math.random(100, 600)
     local gapSize = math.random(80, 120) -- Random gap size between pipes
@@ -46,8 +51,18 @@ function generatePipePair()
 end
 
 function state:load()
+    print("in_game_state loading")
+
     BG1 = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Background/Background7.png")
     GroundImage = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Tiles/Style 1/TileStyle1.png")
+
+    -- Reset everything
+    resetPhysicsWorld()
+    isPlayerAlive = true
+    groundX = 0
+    bgX = 0
+    PipesInMap = {}
+    score = 0
 
     -- 4 wide, 2 tall grid of different colored pipes
     -- Only use the first top left for now
@@ -82,14 +97,7 @@ function state:update(dt)
         if love.keyboard.isDown("r") and not self.rPressed then
             self.rPressed = true
 
-            PipesInMap = {}
-            Player:initialize()
-
-            isPlayerAlive = true
-
-            for i = 1, 10 do
-                generatePipePair()
-            end
+            self.load()
 
         elseif not love.keyboard.isDown("r") then
             self.rPressed = false
@@ -128,6 +136,15 @@ function state:update(dt)
         end
     end
 
+    -- If the player passes through two pipes, increase the score
+    for i, pipe in ipairs(PipesInMap) do
+        if pipe.x + 32 < Player.body:getX() and not pipe.scored then
+            print("Scored!")
+            pipe.scored = true
+            score = score + 10
+        end
+    end
+
 end
 
 function state:draw()
@@ -160,22 +177,32 @@ function state:draw()
 
     -- isPlayerAlive
     if not isPlayerAlive then
+        love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
         love.graphics.printf("Game Over", 0, 32, 640, "center")
         love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
-        love.graphics.printf("Game Over", 0, 34, 640, "center")
+        love.graphics.printf("Game Over", 0, 33, 640, "center")
 
         -- Press R to restart
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
         love.graphics.printf("Press R to restart", 0, 64, 640, "center")
         love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
-        love.graphics.printf("Press R to restart", 0, 66, 640, "center")
+        love.graphics.printf("Press R to restart", 0, 65, 640, "center")
     else
+        -- set font size 16
+        love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
         love.graphics.printf(title, 0, 32, 640, "center")
         love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
-        love.graphics.printf(title, 0, 34, 640, "center")
+        love.graphics.printf(title, 0, 33, 640, "center")
     end
+
+    -- Score top left
+    love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 16))
+    love.graphics.setColor(0, 0, 0)
+    love.graphics.print("Score: " .. score, 12, 12)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.print("Score: " .. score, 10, 10)
 
     love.graphics.pop() -- Restore transformation state
 end

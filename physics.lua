@@ -1,3 +1,10 @@
+function resetPhysicsWorld()
+    print("Resetting physics world")
+
+    world = love.physics.newWorld(0, 200)
+    world:setCallbacks(beginContact, endContact, preSolve, postSolve)
+end
+
 function beginContact(a, b, coll)
     -- print names of the two fixtures that collided
     local nameA = a:getUserData()

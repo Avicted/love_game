@@ -25,8 +25,8 @@ function love.load()
     Init_Graphics()
     GState:load()
 
-    world = love.physics.newWorld(0, 200, true) -- Gravity is being set to 0 in the x direction and 200 in the y direction.
-    world:setCallbacks(beginContact, endContact, preSolve, postSolve)
+    -- Init Physics
+    resetPhysicsWorld()
 
     -- Initial Game State
     GState:switch("menu_state", false)

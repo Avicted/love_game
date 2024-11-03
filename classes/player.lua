@@ -33,6 +33,8 @@ function Player:initialize()
     -- Set the body position to the player position
     self.body:setX(self.x)
     self.body:setY(self.y)
+
+    self.body:setFixedRotation(true)
 end
 
 function Player:update(dt)
@@ -61,9 +63,9 @@ function Player:draw()
         self.body:getY(), 0, -1, 1, self.width / 2, self.height / 2)
 
     -- Draw the Box2D body for debugging
-    love.graphics.setColor(1, 0, 0)
-    love.graphics.polygon("line", self.body:getWorldPoints(self.shape:getPoints()))
-    love.graphics.setColor(1, 1, 1)
+    -- love.graphics.setColor(1, 0, 0)
+    -- love.graphics.polygon("line", self.body:getWorldPoints(self.shape:getPoints()))
+    -- love.graphics.setColor(1, 1, 1)
 end
 
 function Player:jump()

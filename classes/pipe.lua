@@ -10,7 +10,7 @@ Pipe = Class("Pipe")
 local PiplesImage
 local pipeWidth = 32
 local pipeHeight = 80
-local scrollSpeed = 64
+local scrollSpeed = 128
 
 function Pipe:initialize(x, y, quad)
     PiplesImage = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Tiles/Style 1/PipeStyle1.png")
@@ -30,10 +30,15 @@ function Pipe:initialize(x, y, quad)
     -- Set the body position to the pipe position
     self.body:setX(self.x)
     self.body:setY(self.y)
+
+    self.scored = false
 end
 
 function Pipe:update(dt)
     self.body:setX(self.body:getX() - scrollSpeed * dt)
+
+    self.x = self.body:getX()
+    self.y = self.body:getY()
 end
 
 function Pipe:draw()
@@ -41,9 +46,9 @@ function Pipe:draw()
         pipeHeight / 2)
 
     -- Draw the Box2D body for debugging
-    love.graphics.setColor(1, 0, 1)
-    love.graphics.polygon("line", self.body:getWorldPoints(self.shape:getPoints()))
-    love.graphics.setColor(1, 1, 1)
+    -- love.graphics.setColor(1, 0, 1)
+    -- love.graphics.polygon("line", self.body:getWorldPoints(self.shape:getPoints()))
+    -- love.graphics.setColor(1, 1, 1)
 end
 
 return Pipe
