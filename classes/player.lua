@@ -25,8 +25,8 @@ function Player:initialize()
     self.animationSpeed = 0.10
 
     -- Box2D body
-    self.body = love.physics.newBody(world, 16, 16, "dynamic")
-    self.shape = love.physics.newRectangleShape(16, 16)
+    self.body = love.physics.newBody(world, 8, 8, "dynamic")
+    self.shape = love.physics.newRectangleShape(8, 8)
     self.fixture = love.physics.newFixture(self.body, self.shape)
     self.fixture:setUserData("Player")
 
