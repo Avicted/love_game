@@ -102,6 +102,10 @@ function state:update(dt)
     if isPlayerAlive then
         if love.keyboard.isDown("space") then
             Player:jump()
+
+            Player.animationSpeed = math.min(Player.animationSpeed * 1.5, 0.80)
+        else
+            Player.animationSpeed = baseAnimationSpeed
         end
     end
 

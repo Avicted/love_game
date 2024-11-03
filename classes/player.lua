@@ -5,6 +5,8 @@ local settings = require("settings")
 
 Player = Class("Player")
 
+baseAnimationSpeed = 0.12
+
 function Player:initialize()
     self.x = settings.width / 4
     self.y = settings.height / 2
@@ -24,7 +26,7 @@ function Player:initialize()
                             love.graphics.newQuad(80, 16, 16, 16, self.image:getDimensions()),
                             love.graphics.newQuad(96, 16, 16, 16, self.image:getDimensions())}
     self.currentFrame = 1
-    self.animationSpeed = 0.20
+    self.animationSpeed = baseAnimationSpeed
 
     -- Box2D body
     self.body = love.physics.newBody(world, 8, 8, "dynamic")
