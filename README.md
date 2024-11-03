@@ -22,3 +22,6 @@ Libraries:
 Assets:
 - https://ma9ici4n.itch.io/pixel-art-bird-16x16
 - https://megacrash.itch.io/flappy-bird-assets
+
+
+![Crow Glide](resources/crow_glide.gif)
