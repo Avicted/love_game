@@ -40,7 +40,7 @@ function state:draw()
     love.graphics.push() -- Save current transformation state
     love.graphics.scale(scale, scale) -- Apply the scaling transformation
 
-    bgMesh = gradientMesh("vertical", {0.0, 0.48, 1.0}, {0.0, 0.84, 1.0})
+    bgMesh = gradientMesh("vertical", {0.0, 0.48, 1.0}, {0.0, 0.84, 1.0}, {0.0, 1.0, 1.0})
     love.graphics.draw(bgMesh, 0, 0, 0, love.graphics.getDimensions())
 
     -- Draw stars using stored positions and sizes
@@ -66,7 +66,7 @@ function state:draw()
     love.graphics.setColor(0, 0, 0) -- Set color to black for the title text
     love.graphics.print(gameName, (window_width - gameName_width) / 2, gameName_y)
     love.graphics.setColor(1, 1, 1) -- Set color to white for the shadow text   
-    love.graphics.print(gameName, (window_width - gameName_width) / 2 - 1, gameName_y - 1)
+    love.graphics.print(gameName, (window_width - gameName_width) / 2 - 8, gameName_y - 1)
 
     love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 32))
     local title_width = love.graphics.getFont():getWidth(title)
@@ -83,9 +83,9 @@ function state:draw()
     love.graphics.print(instruction2, (window_width - instruction2_width) / 2, instruction2_y)
 
     love.graphics.setColor(1, 1, 1) -- Set color to white for the shadow text
-    love.graphics.print(title, (window_width - title_width) / 2 - 1, title_y - 1)
-    love.graphics.print(instruction1, (window_width - instruction1_width) / 2 - 1, instruction1_y - 1)
-    love.graphics.print(instruction2, (window_width - instruction2_width) / 2 - 1, instruction2_y - 1)
+    love.graphics.print(title, (window_width - title_width) / 2 - 4, title_y - 1)
+    love.graphics.print(instruction1, (window_width - instruction1_width) / 2 - 4, instruction1_y - 1)
+    love.graphics.print(instruction2, (window_width - instruction2_width) / 2 - 4, instruction2_y - 1)
 end
 
 function state:unload()
