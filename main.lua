@@ -5,8 +5,13 @@ Class = require "libs/middleclass"
 -- Game libraries
 require "libs/helperlib"
 require "libs/GState"
+require "physics"
 
 local settings = require("settings")
+
+-- Global variables
+world = nil
+isPlayerAlive = true
 
 function love.resize(w, h)
     -- Store the scaling factor for use in love.draw
@@ -20,11 +25,15 @@ function love.load()
     Init_Graphics()
     GState:load()
 
+    world = love.physics.newWorld(0, 200, true) -- Gravity is being set to 0 in the x direction and 200 in the y direction.
+    world:setCallbacks(beginContact, endContact, preSolve, postSolve)
+
     -- Initial Game State
     GState:switch("menu_state", false)
 end
 
 function love.update(dt)
+    world:update(dt)
     GState:update(dt)
 end
 
