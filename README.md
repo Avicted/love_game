@@ -3,7 +3,6 @@
 
 This is a template for creating a game using the [LÖVE](https://love2d.org/) framework.
 
-Flappy Bird clone.  This is a simple game to demonstrate the use of the LÖVE framework.
 
 ## Setup
 ```bash
