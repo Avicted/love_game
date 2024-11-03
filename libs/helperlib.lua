@@ -5,6 +5,10 @@ function Init_Graphics()
 
     font = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 32)
     love.graphics.setFont(font)
+
+    -- Set the game icon
+    local icon = love.image.newImageData("resources/icon.jpg")
+    love.window.setIcon(icon)
 end
 
 -- Color multipler
