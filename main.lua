@@ -52,11 +52,11 @@ end
 function love.draw()
     chain(function()
         GState:draw()
-    end)
 
-    -- FPS top left
-    love.graphics.setColor(0, 0, 0)
-    love.graphics.print("FPS: " .. love.timer.getFPS(), 12, 12)
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.print("FPS: " .. love.timer.getFPS(), 10, 10)
+        -- FPS bottom left
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.print("FPS: " .. love.timer.getFPS(), 16, love.graphics.getHeight() - 40)
+        love.graphics.setColor(1, 1, 1)
+        love.graphics.print("FPS: " .. love.timer.getFPS(), 16, love.graphics.getHeight() - 41)
+    end)
 end
