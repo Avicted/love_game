@@ -89,8 +89,10 @@ function state:update(dt)
         GState:switch("menu_state", true)
     end
 
-    if love.keyboard.isDown("space") then
-        Player:jump()
+    if isPlayerAlive then
+        if love.keyboard.isDown("space") then
+            Player:jump()
+        end
     end
 
     if not isPlayerAlive then

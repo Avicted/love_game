@@ -35,10 +35,11 @@ function Player:initialize()
     self.body:setY(self.y)
 
     self.body:setFixedRotation(true)
+    self.body:setLinearDamping(0.1)
+    self.body:setLinearVelocity(0, 0)
 end
 
 function Player:update(dt)
-    self.velocity = self.velocity + self.gravity
     self.body:setY(self.body:getY() - self.velocity)
 
     -- If the player is below the screen height, reset the game
@@ -69,7 +70,7 @@ function Player:draw()
 end
 
 function Player:jump()
-    self.velocity = self.velocity + self.lift
+    self.body:applyLinearImpulse(0, -0.75)
 end
 
 return Player
