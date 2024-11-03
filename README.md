@@ -15,6 +15,7 @@ VSCode: F5 to run the game.
 Libraries:
 - https://bitbucket.org/basicer/cupid-git/src/master/
 - https://github.com/kikito/middleclass
+- https://github.com/vrld/moonshine
 
 
 Assets:
