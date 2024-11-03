@@ -57,6 +57,9 @@ function Player:update(dt)
     -- Limit the players top most position top the screen height - 16
     if self.body:getY() < 7 then
         self.body:setY(7)
+
+        -- reset the velocity
+        self.body:setLinearVelocity(0, 0)
     end
 
     -- Animate
