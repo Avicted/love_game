@@ -9,6 +9,7 @@ require("physics")
 local BG1
 local BG1Size = 256
 local SkyColor = {0 / 255, 205 / 255, 249 / 255}
+local SkyImage
 
 local GroundImage
 local GroundTiles = {}
@@ -60,6 +61,7 @@ function state:load()
 
     BG1 = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Background/Background7.png")
     GroundImage = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Tiles/Style 1/TileStyle1.png")
+    SkyImage = love.graphics.newImage("resources/sprites/sky.png")
 
     -- Reset everything
     resetPhysicsWorld()
@@ -173,11 +175,14 @@ function state:draw()
     local title = "Press SPACE to fly up"
     love.graphics.setFont(font)
 
-    love.graphics.setBackgroundColor(SkyColor)
+    love.graphics.setBackgroundColor(0, 0, 0)
 
     -- Apply scaling to everything inside love.draw
     love.graphics.push() -- Save current transformation state
     love.graphics.scale(scale, scale) -- Apply the scaling transformation
+
+    -- Draw the Sky
+    love.graphics.draw(SkyImage, 0, 0, 0, 1, 1)
 
     -- Draw the background
     for i = 0, love.graphics.getWidth() / BG1Size + 1 do
