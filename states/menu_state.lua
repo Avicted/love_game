@@ -86,6 +86,17 @@ function state:draw()
     love.graphics.print(title, (window_width - title_width) / 2 - 4, title_y - 1)
     love.graphics.print(instruction1, (window_width - instruction1_width) / 2 - 4, instruction1_y - 1)
     love.graphics.print(instruction2, (window_width - instruction2_width) / 2 - 4, instruction2_y - 1)
+
+    -- bottom center smaller text Created By Avic
+    love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 16))
+    local createdBy = "Created By Avic"
+    local createdBy_width = love.graphics.getFont():getWidth(createdBy)
+    local createdBy_y = window_height - 32
+
+    love.graphics.setColor(0, 0, 0) -- Set color to black for the title text
+    love.graphics.print(createdBy, (window_width - createdBy_width) / 2, createdBy_y)
+    love.graphics.setColor(1, 1, 1) -- Set color to white for the shadow text
+    love.graphics.print(createdBy, (window_width - createdBy_width) / 2 - 2, createdBy_y - 1)
 end
 
 function state:unload()
