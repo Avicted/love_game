@@ -26,3 +26,6 @@ Assets:
 
 
 ![Crow Glide](resources/crow_glide.gif)
+
+## Download LÖVE version of the game
+https://avicted.itch.io/crow-glide
