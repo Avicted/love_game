@@ -74,7 +74,6 @@ function state:draw()
     love.graphics.print(title, (window_width - title_width) / 2 - 1, title_y - 1)
     love.graphics.print(instruction1, (window_width - instruction1_width) / 2 - 1, instruction1_y - 1)
     love.graphics.print(instruction2, (window_width - instruction2_width) / 2 - 1, instruction2_y - 1)
-
 end
 
 function state:unload()
