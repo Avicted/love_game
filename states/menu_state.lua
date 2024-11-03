@@ -54,10 +54,21 @@ function state:draw()
 
     local window_width = love.graphics.getWidth()
     local window_height = love.graphics.getHeight()
+    local gameName = "Crow Glide"
     local title = "Main Menu"
     local instruction1 = "Press SPACE to Play"
     local instruction2 = "Press ESC to quit"
 
+    love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 64))
+    local gameName_width = love.graphics.getFont():getWidth(gameName)
+    local gameName_y = (window_height / 2) - 200
+
+    love.graphics.setColor(0, 0, 0) -- Set color to black for the title text
+    love.graphics.print(gameName, (window_width - gameName_width) / 2, gameName_y)
+    love.graphics.setColor(1, 1, 1) -- Set color to white for the shadow text   
+    love.graphics.print(gameName, (window_width - gameName_width) / 2 - 1, gameName_y - 1)
+
+    love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 32))
     local title_width = love.graphics.getFont():getWidth(title)
     local instruction1_width = love.graphics.getFont():getWidth(instruction1)
     local instruction2_width = love.graphics.getFont():getWidth(instruction2)
@@ -66,7 +77,6 @@ function state:draw()
     local instruction1_y = (window_height / 2)
     local instruction2_y = (window_height / 2) + 60
 
-    love.graphics.setFont(self.font)
     love.graphics.setColor(0, 0, 0) -- Set color to black for the title text
     love.graphics.print(title, (window_width - title_width) / 2, title_y)
     love.graphics.print(instruction1, (window_width - instruction1_width) / 2, instruction1_y)

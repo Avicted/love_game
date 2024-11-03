@@ -1,4 +1,5 @@
-# LÖVE game template
+# Crow Glide
+## Actually a Flappy Bird clone
 
 This is a template for creating a game using the [LÖVE](https://love2d.org/) framework.
 
