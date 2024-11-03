@@ -216,6 +216,13 @@ function state:draw()
         love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
         love.graphics.printf("Press R to restart", 0, 64, settings.width, "center")
     else
+        -- Press backspace to go back to the menu
+        love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
+        love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
+        love.graphics.printf("Press BACKSPACE to go back to the menu", 0, 17, settings.width, "center")
+        love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
+        love.graphics.printf("Press BACKSPACE to go back to the menu", 0, 16, settings.width, "center")
+
         love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
         love.graphics.printf(title, 0, 33, settings.width, "center")
