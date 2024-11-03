@@ -10,7 +10,6 @@ Pipe = Class("Pipe")
 local PiplesImage
 local pipeWidth = 32
 local pipeHeight = 80
-local scrollSpeed = 128
 
 function Pipe:initialize(x, y, quad)
     PiplesImage = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Tiles/Style 1/PipeStyle1.png")
@@ -32,10 +31,11 @@ function Pipe:initialize(x, y, quad)
     self.body:setY(self.y)
 
     self.scored = false
+    self.scrollSpeed = 128
 end
 
 function Pipe:update(dt)
-    self.body:setX(self.body:getX() - scrollSpeed * dt)
+    self.body:setX(self.body:getX() - self.scrollSpeed * dt)
 
     self.x = self.body:getX()
     self.y = self.body:getY()

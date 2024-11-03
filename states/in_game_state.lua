@@ -33,7 +33,9 @@ function generatePipePair()
     -- math.randomseed(os.time())
 
     local pipeX = newX + math.random(100, 600)
-    local gapSize = math.random(80, 120) -- Random gap size between pipes
+    local baseGapSize = 120 -- Base gap size between pipes
+    local gapReduction = math.min(score / 10, 40) -- Reduce gap size based on score, max reduction of 40
+    local gapSize = math.random(baseGapSize - gapReduction, baseGapSize - gapReduction + 40)
 
     local upperPipeY = math.random(0, 250 - 80 - gapSize)
     if upperPipeY < 0 then -- Minimum 0
@@ -63,6 +65,7 @@ function state:load()
     bgX = 0
     PipesInMap = {}
     score = 0
+    scrollSpeed = 128
 
     -- 4 wide, 2 tall grid of different colored pipes
     -- Only use the first top left for now
@@ -143,7 +146,17 @@ function state:update(dt)
         if pipe.x + 32 < Player.body:getX() and not pipe.scored then
             print("Scored!")
             pipe.scored = true
-            score = score + 10
+            score = score + 16
+
+            if score % 100 == 0 then
+                scrollSpeed = scrollSpeed + 16
+
+                for i, pipe in ipairs(PipesInMap) do
+                    pipe.scrollSpeed = scrollSpeed
+                end
+
+                print("Scroll speed increased to " .. scrollSpeed)
+            end
         end
     end
 
