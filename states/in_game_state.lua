@@ -2,6 +2,8 @@ local state = {}
 
 state.name = "in_game"
 
+local settings = require("settings")
+
 local Player = require("classes/player")
 local Pipe = require("classes/pipe")
 require("physics")
@@ -186,13 +188,13 @@ function state:draw()
 
     -- Draw the background
     for i = 0, love.graphics.getWidth() / BG1Size + 1 do
-        love.graphics.draw(BG1, bgX + i * BG1Size, 360 - BG1Size - (-GroundTileSize / 0.2), 0, 1, 1)
+        love.graphics.draw(BG1, bgX + i * BG1Size, settings.height - BG1Size - (-GroundTileSize / 0.2), 0, 1, 1)
     end
 
     -- Draw the ground
     for i = 0, love.graphics.getWidth() / GroundTileSize + 1 do
-        love.graphics.draw(GroundImage, GroundTiles[i % 3 + 1], groundX + i * GroundTileSize, 360 - GroundTileSize, 0,
-            1, 1)
+        love.graphics.draw(GroundImage, GroundTiles[i % 3 + 1], groundX + i * GroundTileSize,
+            settings.height - GroundTileSize, 0, 1, 1)
     end
 
     -- Draw the pipes
@@ -205,20 +207,20 @@ function state:draw()
     if not isPlayerAlive then
         love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
-        love.graphics.printf("Game Over", 0, 33, 640, "center")
+        love.graphics.printf("Game Over", 0, 33, settings.width, "center")
         love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
-        love.graphics.printf("Game Over", 0, 32, 640, "center")
+        love.graphics.printf("Game Over", 0, 32, settings.width, "center")
 
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
-        love.graphics.printf("Press R to restart", 0, 65, 640, "center")
+        love.graphics.printf("Press R to restart", 0, 65, settings.width, "center")
         love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
-        love.graphics.printf("Press R to restart", 0, 64, 640, "center")
+        love.graphics.printf("Press R to restart", 0, 64, settings.width, "center")
     else
         love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0) -- Set color to white for the title text
-        love.graphics.printf(title, 0, 33, 640, "center")
+        love.graphics.printf(title, 0, 33, settings.width, "center")
         love.graphics.setColor(1, 1, 1) -- Set color to black for the shadow text
-        love.graphics.printf(title, 0, 32, 640, "center")
+        love.graphics.printf(title, 0, 32, settings.width, "center")
     end
 
     -- Score top left

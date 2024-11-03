@@ -18,8 +18,8 @@ chain = {}
 
 function love.resize(w, h)
     -- Store the scaling factor for use in love.draw
-    scaleX = w / 640
-    scaleY = h / 360
+    scaleX = w / settings.width
+    scaleY = h / settings.height
     scale = math.min(scaleX, scaleY)
 
     chain.resize(w, h)
@@ -30,8 +30,8 @@ function love.load()
     Init_Graphics()
     GState:load()
 
-    chain = moonshine(640, 360, moonshine.effects.crt).chain(moonshine.effects.vignette).chain(moonshine.effects
-                                                                                                   .scanlines)
+    chain = moonshine(settings.width, settings.height, moonshine.effects.crt).chain(moonshine.effects.vignette).chain(
+        moonshine.effects.scanlines)
     chain.vignette.radius = 1.4
     chain.vignette.opacity = 0.4
     chain.scanlines.opacity = 0.08

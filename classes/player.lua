@@ -1,11 +1,13 @@
 -- using middleclass.lua create a player class (flappy bird with a sprite)
 local Class = require "libs/middleclass"
 
+local settings = require("settings")
+
 Player = Class("Player")
 
 function Player:initialize()
-    self.x = 640 / 4
-    self.y = 360 / 2
+    self.x = settings.width / 4
+    self.y = settings.height / 2
 
     self.gravity = -0.00981
     self.lift = 0.10
@@ -43,7 +45,7 @@ function Player:update(dt)
     self.body:setY(self.body:getY() - self.velocity)
 
     -- If the player is below the screen height, reset the game
-    if self.body:getY() > (360 - 16) then
+    if self.body:getY() > (settings.height - 16) then
         isPlayerAlive = false
     end
 

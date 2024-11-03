@@ -1,5 +1,7 @@
 local state = {}
 
+local settings = require("settings")
+
 state.name = "menu_state"
 
 local stars = {} -- Table to hold star positions and sizes
@@ -8,8 +10,8 @@ local numStars = 128
 function state:load()
     -- Generate star positions and sizes once and store them in the stars table
     for i = 1, numStars do
-        local x = math.random(0, 640)
-        local y = math.random(0, 360)
+        local x = math.random(0, settings.width)
+        local y = math.random(0, settings.height)
         local size = math.random(1, 5) -- Random size between 1 and 5 pixels
 
         table.insert(stars, {
