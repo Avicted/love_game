@@ -16,8 +16,10 @@ function beginContact(a, b, coll)
     -- if the player collides with the ground, end the game
     if nameA == "Player" and nameB == "Pipe" then
         isPlayerAlive = false
+        deadSound:play()
     elseif nameA == "Pipe" and nameB == "Player" then
         isPlayerAlive = false
+        deadSound:play()
     end
 end
 

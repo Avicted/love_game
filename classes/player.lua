@@ -6,6 +6,7 @@ local settings = require("settings")
 Player = Class("Player")
 
 baseAnimationSpeed = 0.12
+deadSound = love.audio.newSource("resources/audio/dead.wav", "static")
 
 function Player:initialize()
     self.x = settings.width / 4
@@ -49,6 +50,8 @@ function Player:update(dt)
     -- If the player is below the screen height, reset the game
     if self.body:getY() > (settings.height - 16) then
         isPlayerAlive = false
+
+        deadSound:play()
     end
 
     -- Limit the players top most position top the screen height - 16
