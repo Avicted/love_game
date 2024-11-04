@@ -63,9 +63,9 @@ function state:draw()
     local gameName_width = love.graphics.getFont():getWidth(gameName)
     local gameName_y = (window_height / 2) - 200
 
-    love.graphics.setColor(0, 0, 0) -- Set color to black for the title text
+    love.graphics.setColor(0, 0, 0)
     love.graphics.print(gameName, (window_width - gameName_width) / 2, gameName_y)
-    love.graphics.setColor(1, 1, 1) -- Set color to white for the shadow text   
+    love.graphics.setColor(1, 1, 1)
     love.graphics.print(gameName, (window_width - gameName_width) / 2 - 8, gameName_y - 1)
 
     love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 32))
@@ -77,12 +77,13 @@ function state:draw()
     local instruction1_y = (window_height / 2)
     local instruction2_y = (window_height / 2) + 60
 
-    love.graphics.setColor(0, 0, 0) -- Set color to black for the title text
+    -- Press SPACE to Play & Press ESC to quit
+    love.graphics.setColor(0, 0, 0)
     love.graphics.print(title, (window_width - title_width) / 2, title_y)
     love.graphics.print(instruction1, (window_width - instruction1_width) / 2, instruction1_y)
     love.graphics.print(instruction2, (window_width - instruction2_width) / 2, instruction2_y)
 
-    love.graphics.setColor(1, 1, 1) -- Set color to white for the shadow text
+    love.graphics.setColor(1, 1, 1)
     love.graphics.print(title, (window_width - title_width) / 2 - 4, title_y - 1)
     love.graphics.print(instruction1, (window_width - instruction1_width) / 2 - 4, instruction1_y - 1)
     love.graphics.print(instruction2, (window_width - instruction2_width) / 2 - 4, instruction2_y - 1)
@@ -93,9 +94,9 @@ function state:draw()
     local createdBy_width = love.graphics.getFont():getWidth(createdBy)
     local createdBy_y = window_height - 32
 
-    love.graphics.setColor(0, 0, 0) -- Set color to black for the title text
+    love.graphics.setColor(0, 0, 0)
     love.graphics.print(createdBy, (window_width - createdBy_width) / 2, createdBy_y)
-    love.graphics.setColor(1, 1, 1) -- Set color to white for the shadow text
+    love.graphics.setColor(1, 1, 1)
     love.graphics.print(createdBy, (window_width - createdBy_width) / 2 - 2, createdBy_y - 1)
 end
 
