@@ -210,7 +210,6 @@ function state:draw()
     Player:draw()
 
     if not isPlayerAlive then
-        -- Game over text
         love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0)
         love.graphics.printf("Game Over", 0, 33, settings.width, "center")
@@ -222,7 +221,6 @@ function state:draw()
         love.graphics.setColor(1, 1, 1)
         love.graphics.printf("Press R to restart", 0, 64, settings.width, "center")
     else
-        -- Press backspace to go back to the menu
         love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
         love.graphics.setColor(0, 0, 0)
         love.graphics.printf("Press BACKSPACE to go back to the menu", 68, 17, settings.width, "center")
