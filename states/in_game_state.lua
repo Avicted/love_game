@@ -10,8 +10,10 @@ require("physics")
 
 local BG1
 local BG1Size = 256
+local BG2Size = 256
 local SkyColor = {0 / 255, 205 / 255, 249 / 255}
 local SkyImage
+local BG2
 
 local GroundImage
 local GroundTiles = {}
@@ -64,12 +66,14 @@ function state:load()
     BG1 = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Background/Background7.png")
     GroundImage = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Tiles/Style 1/TileStyle1.png")
     SkyImage = love.graphics.newImage("resources/sprites/sky.png")
+    BG2 = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Background/Background2.png")
 
     -- Reset everything
     resetPhysicsWorld()
     isPlayerAlive = true
     groundX = 0
     bgX = 0
+    bgX2 = 0
     PipesInMap = {}
     score = 0
     scrollSpeed = 128
@@ -127,6 +131,7 @@ function state:update(dt)
 
     -- Update background and ground positions
     bgX = bgX - scrollSpeed * dt
+    bgX2 = bgX2 - scrollSpeed * 0.4 * dt
     groundX = groundX - scrollSpeed * dt
 
     -- Update the pipes
@@ -138,6 +143,10 @@ function state:update(dt)
     if bgX <= -BG1Size then
         bgX = 0
         print("bgX reset")
+    end
+    if bgX2 <= -BG1Size then
+        bgX2 = 0
+        print("bgX2 reset")
     end
 
     if groundX <= -GroundTileSize * 3 then
@@ -190,6 +199,14 @@ function state:draw()
 
     -- Draw the Sky
     love.graphics.draw(SkyImage, 0, 0, 0, 1, 1)
+
+    -- Draw a parallax effect with the background, smaller scale higher up
+    for i = 0, love.graphics.getWidth() / BG2Size + 1 do
+        love.graphics.draw(BG2, bgX2 + i * (BG2Size * 0.50), settings.height - 260, 0, 0.50, 0.50) -- Scale 0.50 for the background
+        love.graphics.setColor(SkyColor[1], SkyColor[2], SkyColor[3], 0.50) -- Sky colored Fog 0.50 transparency
+        love.graphics.rectangle("fill", bgX2 + i * (BG2Size * 0.5), settings.height - 260, BG2Size, 220)
+        love.graphics.setColor(1, 1, 1)
+    end
 
     -- Draw the background
     for i = 0, love.graphics.getWidth() / BG1Size + 1 do
