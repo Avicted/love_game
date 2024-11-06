@@ -61,7 +61,7 @@ function generatePipePair()
     table.insert(PipesInMap, upperPipe)
     table.insert(PipesInMap, lowerPipe)
 
-    print("Pipe pair generated")
+    -- print("Pipe pair generated")
 end
 
 function state:load()
@@ -149,11 +149,11 @@ function state:update(dt)
     -- Reset positions to create a looping effect
     if bgX <= -BG1Size then
         bgX = bgX + BG1Size
-        print("bgX reset")
+        -- print("bgX reset")
     end
     if bgX2 <= -BG2Size then
         bgX2 = bgX2 + BG2Size
-        print("bgX2 reset")
+        -- print("bgX2 reset")
     end
 
     if groundX <= -GroundTileSize * 3 then
