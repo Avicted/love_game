@@ -40,7 +40,7 @@ function generatePipePair()
         newX = math.max(newX, pipe.x)
     end
 
-    -- math.randomseed(os.time())
+    math.randomseed(os.time())
 
     local pipeX = newX + math.random(100, 600)
     local baseGapSize = 120 -- Base gap size between pipes
@@ -74,6 +74,9 @@ function state:load()
 
     font8 = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8)
     font16 = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 16)
+
+    -- Set random seed
+    math.randomseed(os.time())
 
     -- Reset everything
     resetPhysicsWorld()
