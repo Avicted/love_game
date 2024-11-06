@@ -8,6 +8,9 @@ local Player = require("classes/player")
 local Pipe = require("classes/pipe")
 require("physics")
 
+local font8
+local font16
+
 local BG1
 local BG1Size = 256
 local BG2Size = 256
@@ -23,6 +26,7 @@ local Pipes = {} -- every type of pipe
 local PipesInMap = {} -- pipes in use
 
 local bgX = 0
+local bgX2 = 0
 local groundX = 0
 local scrollSpeed = 128
 
@@ -67,6 +71,9 @@ function state:load()
     GroundImage = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Tiles/Style 1/TileStyle1.png")
     SkyImage = love.graphics.newImage("resources/sprites/sky.png")
     BG2 = love.graphics.newImage("resources/sprites/Flappy Bird Assets/Background/Background2.png")
+
+    font8 = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8)
+    font16 = love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 16)
 
     -- Reset everything
     resetPhysicsWorld()
@@ -141,16 +148,16 @@ function state:update(dt)
 
     -- Reset positions to create a looping effect
     if bgX <= -BG1Size then
-        bgX = 0
+        bgX = bgX + BG1Size
         print("bgX reset")
     end
-    if bgX2 <= -BG1Size then
-        bgX2 = 0
+    if bgX2 <= -BG2Size then
+        bgX2 = bgX2 + BG2Size
         print("bgX2 reset")
     end
 
     if groundX <= -GroundTileSize * 3 then
-        groundX = 0
+        groundX = groundX + GroundTileSize * 3
     end
 
     -- Reset pipes that are off screen
@@ -189,7 +196,6 @@ end
 
 function state:draw()
     local title = "Press SPACE to fly up"
-    love.graphics.setFont(font)
 
     love.graphics.setBackgroundColor(0, 0, 0)
 
@@ -221,13 +227,15 @@ function state:draw()
 
     -- Draw the pipes
     for i, pipe in ipairs(PipesInMap) do
-        pipe:draw()
+        if pipe.x > -32 and pipe.x < settings.width + 32 then
+            pipe:draw()
+        end
     end
 
     Player:draw()
 
     if not isPlayerAlive then
-        love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
+        love.graphics.setFont(font8)
         love.graphics.setColor(0, 0, 0)
         love.graphics.printf("Game Over", 0, 33, settings.width, "center")
         love.graphics.setColor(1, 1, 1)
@@ -238,13 +246,13 @@ function state:draw()
         love.graphics.setColor(1, 1, 1)
         love.graphics.printf("Press R to restart", 0, 64, settings.width, "center")
     else
-        love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
+        love.graphics.setFont(font8)
         love.graphics.setColor(0, 0, 0)
         love.graphics.printf("Press BACKSPACE to go back to the menu", 68, 17, settings.width, "center")
         love.graphics.setColor(1, 1, 1)
         love.graphics.printf("Press BACKSPACE to go back to the menu", 67, 16, settings.width, "center")
 
-        love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 8))
+        love.graphics.setFont(font8)
         love.graphics.setColor(0, 0, 0)
         love.graphics.printf(title, 0, 33, settings.width, "center")
         love.graphics.setColor(1, 1, 1)
@@ -252,7 +260,7 @@ function state:draw()
     end
 
     -- Score top left
-    love.graphics.setFont(love.graphics.newFont("resources/fonts/SuperMarioBros2.ttf", 16))
+    love.graphics.setFont(font16)
     love.graphics.setColor(0, 0, 0)
     love.graphics.print("Score: " .. score, 12, 12)
     love.graphics.setColor(1, 1, 1)
