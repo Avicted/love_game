@@ -201,7 +201,7 @@ function state:draw()
     love.graphics.draw(SkyImage, 0, 0, 0, 1, 1)
 
     -- Draw a parallax effect with the background, smaller scale higher up
-    for i = 0, love.graphics.getWidth() / BG2Size + 1 do
+    for i = 0, settings.width / BG2Size + 4 do
         love.graphics.draw(BG2, bgX2 + i * (BG2Size * 0.50), settings.height - 260, 0, 0.50, 0.50) -- Scale 0.50 for the background
         love.graphics.setColor(SkyColor[1], SkyColor[2], SkyColor[3], 0.50) -- Sky colored Fog 0.50 transparency
         love.graphics.rectangle("fill", bgX2 + i * (BG2Size * 0.5), settings.height - 260, BG2Size, 220)
@@ -209,12 +209,12 @@ function state:draw()
     end
 
     -- Draw the background
-    for i = 0, love.graphics.getWidth() / BG1Size + 1 do
+    for i = 0, settings.width / BG1Size + 1 do
         love.graphics.draw(BG1, bgX + i * BG1Size, settings.height - BG1Size - (-GroundTileSize / 0.2), 0, 1, 1)
     end
 
     -- Draw the ground
-    for i = 0, love.graphics.getWidth() / GroundTileSize + 1 do
+    for i = 0, settings.width / GroundTileSize + 1 do
         love.graphics.draw(GroundImage, GroundTiles[i % 3 + 1], groundX + i * GroundTileSize,
             settings.height - GroundTileSize, 0, 1, 1)
     end
