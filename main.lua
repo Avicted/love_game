@@ -15,8 +15,8 @@ isPlayerAlive = true
 chain = {}
 
 -- Define fixed 16:9 resolution
-local fixedWidth = 640
-local fixedHeight = 360
+local fixedWidth = settings.width
+local fixedHeight = settings.height
 
 local scaleX, scaleY, scale, offsetX, offsetY
 
