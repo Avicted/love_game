@@ -3,6 +3,8 @@
 
 This is a simple game to demonstrate the use of the  [LÖVE](https://love2d.org/)  framework.
 
+The game keeps a 16:9 aspect ratio and scales the game to the window size. The base resolution is 640x360.
+
 ## Setup
 ```bash
 git clone --recurse-submodules git@github.com:Avicted/love_game.git
